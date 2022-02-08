@@ -1,0 +1,15 @@
+{
+  "ProjectName": "CustomKnightPlus",
+  "ModVersion": "0.0.0.0",
+  "CodeDir": ".\\Scripts\\",
+  "EmbeddedResourceDir": ".\\EmbeddedResource\\",
+  "EmbeddedResource": {},
+  "Guid": "9a5e9314-eca7-4aaf-8900-e8333c12c8d5",
+  "DependenciesDir": ".\\Dependencies\\",
+  "ModdingAPIVersion": "1.5.78.11833-68",
+  "IgnoreDlls": [],
+  "WebDependencies": [
+    "https://github.com/PrashantMohta/HollowKnight.CustomKnight/releases/download/v2.0.0/CustomKnight.dll",
+    "https://github.com/PrashantMohta/HollowKnight.CustomKnight/releases/download/v2.0.0/AsymmetricKnight.dll"
+  ]
+}
