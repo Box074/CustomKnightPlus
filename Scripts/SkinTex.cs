@@ -17,6 +17,7 @@ public class SkinTex
     private MapZone lastZone;
     public Texture2D GetTex(MapZone zone,bool facingRight)
     {
+        if(!HasTex) return null;
         if(lastZone == zone)
         {
             if(facingRight)
@@ -84,6 +85,8 @@ public class SkinTex
     {
         texDatas.Clear();
         HasTex = false;
+        lastZone = MapZone.NONE;
+        lastTexR = lastTexL = null;
         foreach (var v in EnvironmentTypes)
         {
             if (skin.Exists($"{name}_{v}.png"))

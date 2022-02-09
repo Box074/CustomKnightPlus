@@ -1,6 +1,6 @@
 {
   "ProjectName": "CustomKnightPlus",
-  "ModVersion": "0.0.0.0",
+  "ModVersion": "0.0.1.0",
   "CodeDir": ".\\Scripts\\",
   "EmbeddedResourceDir": ".\\EmbeddedResource\\",
   "EmbeddedResource": {},
@@ -10,6 +10,6 @@
   "IgnoreDlls": [],
   "WebDependencies": [
     "https://github.com/PrashantMohta/HollowKnight.CustomKnight/releases/download/v2.0.0/CustomKnight.dll",
-    "https://github.com/PrashantMohta/HollowKnight.CustomKnight/releases/download/v2.0.0/AsymmetricKnight.dll"
+    "https://github.com/PrashantMohta/Satchel/releases/download/v0.7.5/Satchel.dll"
   ]
 }

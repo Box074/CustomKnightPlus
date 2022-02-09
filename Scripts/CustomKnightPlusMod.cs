@@ -32,6 +32,7 @@ class CustomKnightPlusMod : ModBase
             var skin = SkinManager.GetCurrentSkin();
             if(skin.GetId() != lastSkin)
             {
+                Log($"Change Skin: {skin.GetId()}");
                 lastSkin = skin.GetId();
                 foreach(var v in names)
                 {
@@ -48,8 +49,11 @@ class CustomKnightPlusMod : ModBase
             var fr = HeroController.instance.cState.facingRight;
             MapZone zone = GameManager.instance.sm?.mapZone ?? MapZone.NONE;
             if(lastFacingR == fr && lastZone == zone) return;
+            lastFacingR = fr;
+            lastZone = zone;
             foreach(var v in skinTex)
             {
+                if(!v.Value.HasTex) continue;
                 var r = v.Value.GetTex(zone, fr);
                 if(r != null) SkinManager.Skinables[v.Key].ApplyTexture(r);
             }
