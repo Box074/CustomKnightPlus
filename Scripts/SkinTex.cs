@@ -6,7 +6,7 @@ public class SkinTex
     public static string[] EnvironmentTypes = Enum.GetNames(typeof(MapZone));
     public class SkinTexData
     {
-        public MapZone? area;
+        public MapZone zone;
         public bool facingLeft;
         public Texture2D tex;
     }
@@ -33,8 +33,7 @@ public class SkinTex
         {
             lastTexL = lastTexR = null;
         }
-        SkinTexData last = null;
-        foreach(var v in texDatas)
+        /*foreach(var v in texDatas)
         {
             if(!v.area.HasValue)
             {
@@ -66,27 +65,47 @@ public class SkinTex
                 }
                 if(v.facingLeft == !facingRight) break;
             }
+        }*/
+        var r = texDatas.Where(x => x.zone == zone);
+        var cor = r.FirstOrDefault(x => x.facingLeft == !facingRight);
+        if(cor == null)
+        {
+            cor = r.FirstOrDefault(x => x.facingLeft == facingRight);
         }
-        if(last != null)
+        if(cor == null)
+        {
+            r = texDatas.Where(x => x.zone == MapZone.NONE);
+            cor = r.FirstOrDefault(x => x.facingLeft == !facingRight);
+            if (cor == null)
+            {
+                cor = r.FirstOrDefault(x => x.facingLeft == facingRight);
+            }
+        }
+        if(cor != null)
         {
             lastZone = zone;
             if(facingRight)
             {
-                lastTexR = last;
+                lastTexR = cor;
             }
             else
             {
-                lastTexL = last;
+                lastTexL = cor;
             }
         }
-        return last?.tex;
+        return cor?.tex;
     }
-    public void LoadTex(string name, ISelectableSkin skin)
+    public void Clear()
     {
         texDatas.Clear();
         HasTex = false;
         lastZone = MapZone.NONE;
         lastTexR = lastTexL = null;
+    }
+    [Obsolete]
+    public void LoadTex(string name, ISelectableSkin skin)
+    {
+        Clear();
         foreach (var v in EnvironmentTypes)
         {
             if (skin.Exists($"{name}_{v}.png"))
@@ -94,7 +113,7 @@ public class SkinTex
                 HasTex = true;
                 texDatas.Add(new()
                 {
-                    area = (MapZone)Enum.Parse(typeof(MapZone), v),
+                    zone = (MapZone)Enum.Parse(typeof(MapZone), v),
                     facingLeft = false,
                     tex = skin.GetTexture($"{name}_{v}.png")
                 });
@@ -104,7 +123,7 @@ public class SkinTex
                 HasTex = true;
                 texDatas.Add(new()
                 {
-                    area = (MapZone)Enum.Parse(typeof(MapZone), v),
+                    zone = (MapZone)Enum.Parse(typeof(MapZone), v),
                     facingLeft = true,
                     tex = skin.GetTexture($"{name}_left_{v}.png")
                 });
@@ -115,7 +134,7 @@ public class SkinTex
             HasTex = true;
             texDatas.Add(new()
             {
-                area = null,
+                zone = MapZone.NONE,
                 facingLeft = true,
                 tex = skin.GetTexture($"{name}_left.png")
             });
@@ -125,7 +144,7 @@ public class SkinTex
             HasTex = true;
             texDatas.Add(new()
             {
-                area = null,
+                zone = MapZone.NONE,
                 facingLeft = false,
                 tex = skin.GetTexture($"{name}.png")
             });
