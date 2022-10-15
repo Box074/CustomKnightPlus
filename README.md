@@ -10,11 +10,11 @@ Do NOT use together with [Asymmetric Knight](https://github.com/PrashantMohta/Ho
 
 ### Asymmetric
 
-Attach `_left` after normal skin file name to make asymmetric skin, for example, put `Knight.png` and `Knight_left.png` into the skin folder, then the former will get applied when the knight is facing right, and the latter will get applied when facing left.
+Attach `-left` after normal skin file name to make asymmetric skin, for example, put `Knight.png` and `Knight-left.png` into the skin folder, then the former will get applied when the knight is facing right, and the latter will get applied when facing left.
 
 ## Map zone specific
 
-Attach map zone name after normal skin file name to make map zone specific skin, for example, put `Unn.png` and `Unn_green_path.png` into the skin folder, then the former will get applied when the knight is not in Greenpath, and the latter will get applied when in Greenpath.
+Attach map zone name after normal skin file name to make map zone specific skin, for example, put `Unn.png` and `Unn-green_path.png` into the skin folder, then the former will get applied when the knight is not in Greenpath, and the latter will get applied when in Greenpath.
 
 ### Available map zone strings
 
@@ -68,4 +68,4 @@ Attach map zone name after normal skin file name to make map zone specific skin,
 
 ## Mixed usage
 
-The asymmetric and map zone specific feature can be combined to have more precise control, for example, `Sprint_left_gods_glory.png` only applies when the knight is in Godhome and is facing left.
+The asymmetric and map zone specific feature can be combined to have more precise control, for example, `Sprint-left-gods_glory.png` only applies when the knight is in Godhome and is facing left.
